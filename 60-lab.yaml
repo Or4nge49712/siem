@@ -1,0 +1,8 @@
+network:
+  version: 2
+  ethernets:
+    ens18:
+      dhcp4: true
+    ens19:
+      dhcp4: false
+      addresses: [10.10.10.10/24]
