@@ -1,0 +1,13 @@
+# /etc/netplan/60-lab.yaml  -  VM Linux SIEM sous VirtualBox
+# enp0s3 = carte 1 "NAT" (Internet, DHCP fourni par VirtualBox)
+# enp0s8 = carte 2 "Host-only" (réseau du lab 10.10.10.0/24, le PC hôte est en 10.10.10.1)
+# Vérifier les noms avec : ip -br link
+# Appliquer : sudo chmod 600 /etc/netplan/60-lab.yaml && sudo netplan apply
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: true
+    enp0s8:
+      dhcp4: false
+      addresses: [10.10.10.10/24]

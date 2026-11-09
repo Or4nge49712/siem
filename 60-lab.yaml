@@ -1,3 +1,7 @@
+# /etc/netplan/60-lab.yaml  -  VM Linux SIEM
+# ens18 = VLAN admin (accès + Internet, DHCP)   ens19 = VLAN lab
+# Vérifier les noms d'interfaces avec : ip -br link
+# Appliquer avec : sudo chmod 600 /etc/netplan/60-lab.yaml && sudo netplan apply
 network:
   version: 2
   ethernets:
