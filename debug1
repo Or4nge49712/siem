@@ -1,0 +1,6 @@
+$urls = "https://raw.githubusercontent.com/olafhartong/sysmon-modular/master/sysmonconfig.xml",
+        "https://raw.githubusercontent.com/olafhartong/sysmon-modular/main/sysmonconfig.xml"
+foreach ($u in $urls) {
+  try { Invoke-WebRequest $u -OutFile C:\LabSetup\sysmonconfig.xml -UseBasicParsing; "OK : $u"; break }
+  catch { "Echec : $u" }
+}
