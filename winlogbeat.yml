@@ -1,0 +1,32 @@
+# C:\Program Files\Winlogbeat\winlogbeat.yml  -  VM Windows (endpoint)
+# Remplacer le mot de passe. Vérifier avec : .\winlogbeat.exe test config -c .\winlogbeat.yml -e
+winlogbeat.event_logs:
+  - name: Security
+  - name: System
+  - name: Application
+    ignore_older: 72h
+  - name: Microsoft-Windows-Sysmon/Operational
+  - name: Windows PowerShell
+  - name: Microsoft-Windows-PowerShell/Operational
+    event_id: 4103, 4104, 4105, 4106
+  - name: Microsoft-Windows-TaskScheduler/Operational
+  - name: Microsoft-Windows-Windows Defender/Operational
+
+output.elasticsearch:
+  hosts: ["http://10.10.10.10:9200"]
+  username: "elastic"
+  password: "ChangeMe-Elastic-2026"
+
+setup.kibana:
+  host: "http://10.10.10.10:5601"
+  username: "elastic"
+  password: "ChangeMe-Elastic-2026"
+
+setup.ilm.enabled: true
+
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: C:\ProgramData\winlogbeat\logs
+  name: winlogbeat
+  keepfiles: 7
